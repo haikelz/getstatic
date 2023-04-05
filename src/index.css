@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Lexend";
+    src: url("/public/fonts/lexend/Lexend-Variable.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Satoshi";
+    src: url("/public/fonts/satoshi/Satoshi-Variable.ttf") format("truetype");  
+  }
+
+  @font-face {
+    font-family: "ABeeZee-Italic";
+    src: url("/public/fonts/abeezee/ABeeZee-Italic.ttf") format("truetype");
+  }
+
+  body {
+    @apply font-lexend;
+  }
+
+  button {
+    @apply outline-none;
+  }
+}
