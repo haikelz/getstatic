@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>Firecloud</h1> 
-  <p>Slicing UI Design Firecloud</p>
+  <h1>Getstatic</h1> 
+  <p>Slicing UI Design Getstatic</p>
 </div>
 
 ## Stuff
