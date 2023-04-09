@@ -6,7 +6,7 @@ type PrimaryButtonProps = ChildrenProps & {
   variant?: "primary" | "secondary";
 };
 
-export const Button = ({ children, className, variant }: PrimaryButtonProps) => {
+export default function Button({ children, className, variant }: PrimaryButtonProps) {
   return (
     <button
       type="button"
@@ -22,4 +22,4 @@ export const Button = ({ children, className, variant }: PrimaryButtonProps) => 
       {children}
     </button>
   );
-};
+}

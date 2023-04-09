@@ -1,37 +1,46 @@
-import { lazy } from "react";
+import { lazy, useState } from "react";
 import { twJoin } from "tailwind-merge";
 import { purchaseList } from "~/lib/utils/data";
-import { Button } from "../ui/Button";
+import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
 
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
-const Purchase = () => {
+export default function Purchase() {
+  const [selectedPrice, setSelectedPrice] = useState<number>(0);
+
   return (
     <section className="flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center text-center">
         <Heading>Purchase</Heading>
-        <Description className="mt-9 w-[646px]">
+        <Description className="mt-9 mb-14 md:w-[646px]">
           Start using getstatic as a hosting for your websites today to get the best features to
           buck ratio on the market
         </Description>
-        <div>
-          <div className="w-fit rounded-lg bg-secondary p-2">
-            <span className="text-primary">SAVE 20%</span>
+        <div className="mb-24">
+          <div className="flex w-full items-center justify-end">
+            <div className="w-fit rounded-r-full rounded-tl-full bg-secondary px-3 py-1.5">
+              <span className="text-primary">SAVE 20%</span>
+            </div>
           </div>
           <div className="flex items-center justify-center space-x-5">
             <span>Monthly</span>
-            <div className="rounded-full bg-primary py-1.5 px-2">
-              <div className="h-5 w-5 rounded-full bg-white p-3"></div>
+            <div
+              className={twJoin(
+                "flex items-start justify-start",
+                "rounded-full bg-primary",
+                "py-1.5 pl-9 pr-2"
+              )}
+            >
+              <div className="h-5 w-5 rounded-full bg-white"></div>
             </div>
             <span>Annualy</span>
           </div>
         </div>
       </div>
-      {/** Purchase plan */}
       <div
         className={twJoin(
-          "grid grid-cols-1 grid-rows-1 gap-6",
+          "grid w-full grid-cols-1 grid-rows-1 gap-6 md:w-fit",
           "sm:grid-cols-2",
           "md:grid-cols-3",
           "lg:grid-cols-4"
@@ -41,12 +50,15 @@ const Purchase = () => {
           <div
             key={value.id}
             className={twJoin(
-              "flex cursor-pointer flex-col rounded-lg p-6 transition-all ease-in-out",
+              "flex cursor-pointer flex-col",
+              "rounded-lg p-6",
+              "transition-all ease-in-out",
               "hover:scale-105",
-              value.plan === "Free"
+              value.pricePerMonth === selectedPrice
                 ? "bg-primary text-white"
                 : "border-2 border-[#F4F4F4] bg-white text-black"
             )}
+            onClick={() => setSelectedPrice(value.pricePerMonth)}
           >
             <span>{value.plan}</span>
             <div className="my-6">
@@ -59,7 +71,7 @@ const Purchase = () => {
                   <li className="flex items-center space-x-4" key={value.id}>
                     <LazyLoadImage
                       src={
-                        value.plan === "Free"
+                        value.pricePerMonth === selectedPrice
                           ? "/images/check-white-icon.svg"
                           : "/images/check-icon.svg"
                       }
@@ -72,16 +84,20 @@ const Purchase = () => {
               <Button
                 className={twJoin(
                   "w-full py-3.5",
-                  value.plan === "Free" ? "text-primary" : "text-white"
+                  value.pricePerMonth === selectedPrice ? "text-primary" : "text-white"
                 )}
-                variant={value.plan === "Free" ? "secondary" : "primary"}
+                variant={value.pricePerMonth === selectedPrice ? "secondary" : "primary"}
                 aria-label="proceed"
               >
                 Proceed with {value.plan}
               </Button>
             </div>
-            <span className={value.plan === "Free" ? "text-white" : "font-medium text-gray"}>
-              {value.plan === "Free"
+            <span
+              className={
+                value.pricePerMonth === selectedPrice ? "text-white" : "font-medium text-gray"
+              }
+            >
+              {value.pricePerMonth === selectedPrice
                 ? "No credit card required."
                 : `$${value.priceAnnualy} billed annualy. Save $${
                     value.priceAnnualy / value.pricePerMonth
@@ -92,6 +108,4 @@ const Purchase = () => {
       </div>
     </section>
   );
-};
-
-export default Purchase;
+}

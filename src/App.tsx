@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
 import Banner from "~/components/sections/Banner";
 import Benefits from "~/components/sections/Benefits";
@@ -6,18 +7,15 @@ import ManageFiles from "~/components/sections/ManageFiles";
 import Navbar from "~/components/sections/Navbar";
 import Partners from "~/components/sections/Partners";
 import Purchase from "~/components/sections/Purchase";
-import TryItNow from "./components/sections/TryItNow";
-import { lazy } from "react";
+import TryItNow from "~/components/sections/TryItNow";
 
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
-const App = () => {
+export default function App() {
   return (
     <div
       className={twJoin(
-        "flex w-full max-w-full flex-col items-center justify-center p-4",
-        "dark:bg-gray-900 bg-white",
-        "dark:text-white"
+        "flex w-full max-w-full flex-col items-center justify-center bg-[#FFFFFE] p-4"
       )}
     >
       <Navbar />
@@ -26,15 +24,19 @@ const App = () => {
         <Partners />
         <Benefits />
         <ManageFiles />
-        <div>
-          <LazyLoadImage src="/images/purchase-blob.svg" alt="purchase blob" />
-          <Purchase />
-          <TryItNow />
+        <div className="my-24 flex flex-col items-center justify-center">
+          <LazyLoadImage
+            className="relative translate-y-40"
+            src="/images/purchase-blob.svg"
+            alt="purchase blob"
+          />
+          <div className="flex flex-col items-center justify-center md:absolute">
+            <Purchase />
+            <TryItNow />
+          </div>
         </div>
         <Footer />
       </main>
     </div>
   );
-};
-
-export default App;
+}

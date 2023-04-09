@@ -70,7 +70,7 @@ export const benefitsList = [
 
   {
     id: 3,
-    icon: "/images/code.svg",
+    icon: "/images/code-icon.svg",
     title: "Code Editor",
     description: "No need to switch in between tabs anymore. Make changes right here.",
   },
@@ -87,7 +87,7 @@ export const footerList = [
   {
     id: 1,
     title: "Service",
-    list: ["Status", "FAQ", "Privacy Policy", "Terms of Use"],
+    list: ["Status", "FAQ", "Help Docs", "Privacy Policy", "Terms of Use"],
   },
   {
     id: 2,
@@ -192,5 +192,28 @@ export const manageFilesList = [
     id: 6,
     icon: "/images/logo-icon.svg",
     name: "logo.png",
+  },
+];
+
+export const actionsList = [
+  {
+    id: 1,
+    icon: "/images/upload-files-icon.svg",
+    name: "Upload File",
+  },
+  {
+    id: 2,
+    icon: "/images/trash-icon.svg",
+    name: "Show Removed",
+  },
+  {
+    id: 3,
+    icon: "/images/empty-folder-icon.svg",
+    name: "Empty Project",
+  },
+  {
+    id: 4,
+    icon: "/images/export-icon.svg",
+    name: "Export as ZIP",
   },
 ];

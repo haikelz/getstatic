@@ -3,11 +3,17 @@
   <p>Slicing UI Design Getstatic</p>
 </div>
 
-## Stuff
+## Tech Stack
 
 - React JS
 - Vite
-- Tailwind CSS for styling
+- Framer Motion
+- Tailwind CSS
+
+## TODO
+
+- Using framer-motion for animation
+- Responsive tablet and mobile
 
 ## Screenshots
 

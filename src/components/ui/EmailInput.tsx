@@ -1,6 +1,6 @@
 import { twJoin } from "tailwind-merge";
 
-export const EmailInput = () => {
+export default function EmailInput() {
   return (
     <input
       type="email"
@@ -13,4 +13,4 @@ export const EmailInput = () => {
       )}
     />
   );
-};
+}

@@ -1,13 +1,13 @@
 import { lazy } from "react";
-import { Button } from "../ui/Button";
+import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
 
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
-const TryItNow = () => {
+export default function TryItNow() {
   return (
-    <section className="my-32 flex w-[646px] flex-col items-center justify-center text-center">
-      <Heading>Try It Now</Heading>
+    <section className="my-32 flex flex-col items-center justify-center text-center md:w-[646px]">
+      <Heading>Try It Now!</Heading>
       <Description className="my-9 text-gray">
         Get started with the simpliest static page hosting ever by uploading your project or
         drag-n-drop wherever you want.
@@ -22,6 +22,4 @@ const TryItNow = () => {
       </Button>
     </section>
   );
-};
-
-export default TryItNow;
+}
