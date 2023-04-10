@@ -8,14 +8,19 @@ const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function Footer() {
   return (
-    <footer className="mt-3 flex w-full flex-col items-start justify-start font-satoshi md:relative md:flex-row">
+    <footer
+      className={twJoin(
+        "my-10 flex w-full flex-col items-start justify-start font-satoshi",
+        "md:relative md:flex-row"
+      )}
+    >
       <div
         className={twJoin(
           "flex flex-col items-start justify-center font-medium",
           "md:flex-row md:items-start md:justify-start md:space-x-20"
         )}
       >
-        <div className="flex flex-col justify-start">
+        <div className="mb-10 flex flex-col justify-start">
           <div className="flex items-center justify-start space-x-3">
             <div className="rounded-full bg-secondary p-2">
               <LazyLoadImage className="h-5 w-5" src="/images/logo-icon.svg" alt="logo" />
@@ -31,7 +36,7 @@ export default function Footer() {
         </div>
         <div
           className={twJoin(
-            "grid grid-cols-1 grid-rows-1 gap-4",
+            "grid grid-cols-1 grid-rows-1 gap-10",
             "sm:grid-cols-2 sm:grid-rows-2",
             "lg:grid-cols-4 lg:grid-rows-1"
           )}

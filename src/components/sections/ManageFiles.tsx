@@ -9,13 +9,17 @@ const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 export default function ManageFiles() {
   return (
     <section
-      className={twJoin("my-20", "flex flex-col items-center justify-between", "xl:flex-row")}
+      className={twJoin(
+        "my-10 md:my-20",
+        "flex flex-col items-center justify-between",
+        "xl:flex-row"
+      )}
     >
       <div className="flex flex-col">
         <Heading>
           Manage Files In <span className="text-primary">The</span> Intuitive Way.
         </Heading>
-        <Paragraph className="my-9 text-xl md:w-[31.313rem]">
+        <Paragraph className={twJoin("my-9 text-xl md:w-[31.313rem]")}>
           Don’t worry if you missed something. With Static, you can easily manage and edit your
           files on the fly.
         </Paragraph>
@@ -23,13 +27,19 @@ export default function ManageFiles() {
           Try It Now
         </Button>
       </div>
-      <div className="relative flex flex-col items-start justify-start">
+      <div className="relative mt-9 flex flex-col items-start justify-start">
         <LazyLoadImage
           src="/images/managefiles-blob.svg"
           alt="manage files blob"
-          className="relative"
+          className={twJoin("relative hidden", "md:block")}
         />
-        <div className="absolute left-10 flex flex-col items-center justify-center md:flex-row">
+        <div
+          className={twJoin(
+            "relative md:absolute md:left-10",
+            "flex flex-col items-center justify-center",
+            "md:flex-row"
+          )}
+        >
           <div className={twJoin("h-fit", "rounded-lg border-2 border-cultured bg-white", "p-12")}>
             <ul className="flex flex-col justify-between">
               {manageFilesList.map((value) => (
@@ -69,7 +79,7 @@ export default function ManageFiles() {
           </div>
           <div
             className={twJoin(
-              "bottom-10 -right-32 md:absolute",
+              "absolute bottom-5 right-4 md:-right-32 md:bottom-10",
               "rounded-lg border-2 border-cultured bg-white",
               "p-7"
             )}

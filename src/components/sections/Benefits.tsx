@@ -10,15 +10,22 @@ export default function Benefits() {
   return (
     <section
       className={twJoin(
-        "my-20",
+        "my-10",
         "relative flex w-full flex-col-reverse items-center justify-center",
-        "md:flex-row md:justify-between"
+        "md:my-20 md:flex-row md:justify-between"
       )}
     >
       <div className={twJoin("relative flex flex-col", "md:flex-row")}>
-        {/*<LazyLoadImage src="/images/benefits-blob.svg" alt="benefits blob" />*/}
+        <LazyLoadImage
+          className="hidden md:block"
+          src="/images/benefits-blob.svg"
+          alt="benefits blob"
+        />
         <div
-          className={twJoin("grid grid-cols-1 grid-rows-1 gap-6", "sm:grid-cols-2 sm:grid-rows-2")}
+          className={twJoin(
+            "grid grid-cols-1 grid-rows-1 gap-6 md:absolute",
+            "sm:grid-cols-2 sm:grid-rows-2"
+          )}
         >
           {benefitsList.map((value) => (
             <div
@@ -44,7 +51,7 @@ export default function Benefits() {
           ))}
         </div>
       </div>
-      <div className="mb-9 md:mb-0 md:w-[501px]">
+      <div className={twJoin("mb-9", "md:mb-0 md:w-[501px]")}>
         <Heading className="capitalize">
           Hosting solution with <span className="text-primary">benefits</span>
         </Heading>

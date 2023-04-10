@@ -19,14 +19,14 @@ export default function Purchase() {
   const [selectedPrice, setSelectedPrice] = useState<number>(0);
 
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section className={twJoin("my-10 flex flex-col items-center justify-center", "md:my-20")}>
       <div className="flex flex-col items-center justify-center text-center">
         <Heading>Purchase</Heading>
-        <Description className="mt-9 mb-14 md:w-[646px]">
+        <Description className={twJoin("mt-9 mb-9", "md:w-[646px]")}>
           Start using getstatic as a hosting for your websites today to get the best features to
           buck ratio on the market
         </Description>
-        <div className="mb-24">
+        <div className="mb-9 md:mb-24">
           <div className="flex w-full items-center justify-end">
             <div className="w-fit rounded-r-full rounded-tl-full bg-secondary px-3 py-1.5">
               <span className="text-primary">SAVE 20%</span>

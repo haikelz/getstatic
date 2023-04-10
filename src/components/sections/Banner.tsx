@@ -22,7 +22,7 @@ export default function Banner() {
       className={twJoin(
         "mt-20 mb-10",
         "flex w-full flex-col items-center justify-between",
-        "md:flex-row"
+        "md:mb-20 md:flex-row"
       )}
     >
       <m.div
@@ -67,12 +67,7 @@ export default function Banner() {
           "md:w-[585px] md:flex-row"
         )}
       >
-        <div
-          className={twJoin(
-            "absolute rounded-lg border-2 border-cultured bg-white p-5",
-            "md:w-[494px]"
-          )}
-        >
+        <div className={twJoin("rounded-lg border-2 border-cultured bg-white p-5", "md:w-[494px]")}>
           <div
             className={twJoin(
               "mb-5 flex items-center justify-between",
@@ -113,7 +108,11 @@ export default function Banner() {
             </div>
           </div>
         </div>
-        <LazyLoadImage className="md:ml-14" src="/images/banner-blob.svg" alt="blob banner" />
+        <LazyLoadImage
+          className="hidden md:ml-14 md:block"
+          src="/images/banner-blob.svg"
+          alt="blob banner"
+        />
       </m.div>
     </section>
   );

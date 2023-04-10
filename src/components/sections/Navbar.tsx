@@ -56,8 +56,8 @@ export default function Navbar() {
             <span
               className={twJoin(
                 "cursor-pointer font-satoshi font-medium text-black",
-                "transition-all ease-in-out",
-                "decoration-2 hover:underline hover:underline-offset-4"
+                "decoration-2 transition-all ease-in-out",
+                "hover:underline hover:underline-offset-4"
               )}
             >
               Contact
@@ -65,8 +65,8 @@ export default function Navbar() {
             <button
               className={twJoin(
                 "cursor-pointer font-satoshi font-medium text-black",
-                "transition-all ease-in-out",
-                "decoration-2 hover:underline hover:underline-offset-4"
+                "decoration-2 transition-all ease-in-out",
+                "hover:underline hover:underline-offset-4"
               )}
               type="button"
               aria-label="login"

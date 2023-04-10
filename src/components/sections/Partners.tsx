@@ -1,10 +1,12 @@
+import { twJoin } from "tailwind-merge";
 import { partnersList } from "~/lib/utils/data";
 import LazyLoadImage from "../ui/LazyLoadImage";
-import { twJoin } from "tailwind-merge";
 
 export default function Partners() {
   return (
-    <section className="my-14 flex items-center justify-center p-14 md:flex-row">
+    <section
+      className={twJoin("my-10 flex w-full items-center justify-center", "md:my-20 md:flex-row")}
+    >
       <div
         className={twJoin(
           "flex flex-col items-center justify-center space-x-0 space-y-10",

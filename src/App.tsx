@@ -24,9 +24,9 @@ export default function App() {
         <Partners />
         <Benefits />
         <ManageFiles />
-        <div className="my-24 flex flex-col items-center justify-center">
+        <div className="relative my-10 flex flex-col items-center justify-center md:my-20">
           <LazyLoadImage
-            className="relative translate-y-40"
+            className="relative hidden translate-y-40 md:block"
             src="/images/purchase-blob.svg"
             alt="purchase blob"
           />
