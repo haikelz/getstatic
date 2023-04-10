@@ -1,3 +1,5 @@
+// TODO: absolute image
+
 import { twJoin } from "tailwind-merge";
 import { benefitsList } from "~/lib/utils/data";
 import Button from "../ui/Button";
@@ -9,17 +11,14 @@ export default function Benefits() {
     <section
       className={twJoin(
         "my-20",
-        "flex w-full flex-col items-center justify-between",
-        "md:flex-row"
+        "relative flex w-full flex-col-reverse items-center justify-center",
+        "md:flex-row md:justify-between"
       )}
     >
-      <div className="flex flex-col md:flex-row">
-        <LazyLoadImage src="/images/benefits-blob.svg" alt="blob" className="relative" />
+      <div className={twJoin("relative flex flex-col", "md:flex-row")}>
+        {/*<LazyLoadImage src="/images/benefits-blob.svg" alt="benefits blob" />*/}
         <div
-          className={twJoin(
-            "absolute grid grid-cols-1 grid-rows-1 gap-6",
-            "sm:grid-cols-2 sm:grid-rows-2"
-          )}
+          className={twJoin("grid grid-cols-1 grid-rows-1 gap-6", "sm:grid-cols-2 sm:grid-rows-2")}
         >
           {benefitsList.map((value) => (
             <div
@@ -45,7 +44,7 @@ export default function Benefits() {
           ))}
         </div>
       </div>
-      <div className="md:w-[501px]">
+      <div className="mb-9 md:mb-0 md:w-[501px]">
         <Heading className="capitalize">
           Hosting solution with <span className="text-primary">benefits</span>
         </Heading>

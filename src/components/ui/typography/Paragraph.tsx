@@ -6,5 +6,7 @@ type ParagraphProps = ChildrenProps & {
 };
 
 export function Paragraph({ children, className }: ParagraphProps) {
-  return <p className={twMerge("font-satoshi font-medium text-gray", className)}>{children}</p>;
+  return (
+    <p className={twMerge("font-satoshi text-base font-medium text-gray", className)}>{children}</p>
+  );
 }

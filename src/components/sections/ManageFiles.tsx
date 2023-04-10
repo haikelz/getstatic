@@ -25,18 +25,12 @@ export default function ManageFiles() {
       </div>
       <div className="relative flex flex-col items-start justify-start">
         <LazyLoadImage
-          className="relative"
           src="/images/managefiles-blob.svg"
           alt="manage files blob"
+          className="relative"
         />
-        <div className="left-10 flex flex-col items-center justify-center md:absolute md:flex-row">
-          <div
-            className={twJoin(
-              "relative h-fit",
-              "rounded-lg border-2 border-cultured bg-white",
-              "p-12"
-            )}
-          >
+        <div className="absolute left-10 flex flex-col items-center justify-center md:flex-row">
+          <div className={twJoin("h-fit", "rounded-lg border-2 border-cultured bg-white", "p-12")}>
             <ul className="flex flex-col justify-between">
               {manageFilesList.map((value) => (
                 <li

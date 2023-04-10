@@ -1,12 +1,21 @@
+import { Variants, m } from "framer-motion";
 import { lazy, useState } from "react";
 import { twJoin } from "tailwind-merge";
+import { useVisible } from "~/hooks/useVisible";
 import { purchaseList } from "~/lib/utils/data";
 import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
 
+const variants: Variants = {
+  hidden: { opacity: 0, top: 0 },
+  visible: { opacity: 100, top: 100 },
+  exit: { opacity: 0, top: 0 },
+};
+
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function Purchase() {
+  const [ref, controls] = useVisible();
   const [selectedPrice, setSelectedPrice] = useState<number>(0);
 
   return (
@@ -39,6 +48,7 @@ export default function Purchase() {
         </div>
       </div>
       <div
+        ref={ref}
         className={twJoin(
           "grid w-full grid-cols-1 grid-rows-1 gap-6 md:w-fit",
           "sm:grid-cols-2",
@@ -47,7 +57,11 @@ export default function Purchase() {
         )}
       >
         {purchaseList.map((value) => (
-          <div
+          <m.div
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             key={value.id}
             className={twJoin(
               "flex cursor-pointer flex-col",
@@ -103,7 +117,7 @@ export default function Purchase() {
                     value.priceAnnualy / value.pricePerMonth
                   }.`}
             </span>
-          </div>
+          </m.div>
         ))}
       </div>
     </section>

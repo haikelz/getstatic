@@ -31,7 +31,7 @@ export default function Banner() {
         animate="visible"
         exit="exit"
         variants={variants}
-        className="relative md:h-[299px] md:w-[536px]"
+        className={twJoin("relative", "md:h-[299px] md:w-[536px]")}
       >
         <Heading>
           Get <span className="text-primary">Static</span> Site Hosting{" "}
@@ -62,7 +62,10 @@ export default function Banner() {
         variants={productVariants}
         initial="hidden"
         animate="visible"
-        className="mt-9 flex flex-col items-start justify-start md:w-[585px] md:flex-row"
+        className={twJoin(
+          "relative mt-9 flex flex-col items-start justify-start",
+          "md:w-[585px] md:flex-row"
+        )}
       >
         <div
           className={twJoin(
