@@ -1,8 +1,3 @@
-/**
- * TODO: open close animation navbar
- * - Responsive design
- */
-
 import { lazy, useState } from "react";
 import { twJoin } from "tailwind-merge";
 import { navbarItemList } from "~/lib/utils/data";
@@ -21,14 +16,14 @@ export default function Navbar() {
           "fixed top-0 z-10",
           "flex w-full max-w-full items-center justify-center",
           "bg-white/80 backdrop-blur-md",
-          "md:sticky"
+          "lg:sticky"
         )}
       >
         <div
           className={twJoin(
             "hidden w-full max-w-7xl",
             "items-center justify-between py-4",
-            "md:flex"
+            "lg:flex"
           )}
         >
           <div className="flex items-center justify-center space-x-3">
@@ -82,7 +77,7 @@ export default function Navbar() {
             </Button>
           </div>
         </div>
-        <div className="flex w-full flex-col justify-between px-4 py-2.5 md:hidden">
+        <div className={twJoin("flex w-full flex-col justify-between", "px-4 py-2.5", "lg:hidden")}>
           <div className="flex w-full justify-between">
             <div className="h-fit rounded-full bg-secondary p-4">
               <LazyLoadImage src="/images/logo-icon.svg" alt="logo" />
@@ -96,7 +91,7 @@ export default function Navbar() {
             </button>
           </div>
           {isOpen ? (
-            <div className="flex w-full flex-col">
+            <div className="mt-4 flex w-full flex-col">
               <ul className="space-y-4">
                 {navbarItemList.map((value) => (
                   <li key={value.id}>

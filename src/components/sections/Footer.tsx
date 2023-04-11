@@ -11,13 +11,13 @@ export default function Footer() {
     <footer
       className={twJoin(
         "my-10 flex w-full flex-col items-start justify-start font-satoshi",
-        "md:relative md:flex-row"
+        "lg:relative lg:flex-row"
       )}
     >
       <div
         className={twJoin(
           "flex flex-col items-start justify-center font-medium",
-          "md:flex-row md:items-start md:justify-start md:space-x-20"
+          "md:flex-row md:items-start md:justify-start md:space-x-10"
         )}
       >
         <div className="mb-10 flex flex-col justify-start">

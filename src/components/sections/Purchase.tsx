@@ -1,16 +1,11 @@
-import { Variants, m } from "framer-motion";
+import { m } from "framer-motion";
 import { lazy, useState } from "react";
 import { twJoin } from "tailwind-merge";
 import { useVisible } from "~/hooks/useVisible";
+import { bottomToTop, leftToRight, scaleUp, transition } from "~/lib/utils/animation";
 import { purchaseList } from "~/lib/utils/data";
 import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
-
-const variants: Variants = {
-  hidden: { opacity: 0, top: 0 },
-  visible: { opacity: 100, top: 100 },
-  exit: { opacity: 0, top: 0 },
-};
 
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
@@ -19,14 +14,29 @@ export default function Purchase() {
   const [selectedPrice, setSelectedPrice] = useState<number>(0);
 
   return (
-    <section className={twJoin("my-10 flex flex-col items-center justify-center", "md:my-20")}>
+    <section className={twJoin("mb-10 flex flex-col items-center justify-center")}>
       <div className="flex flex-col items-center justify-center text-center">
-        <Heading>Purchase</Heading>
-        <Description className={twJoin("mt-9 mb-9", "md:w-[646px]")}>
-          Start using getstatic as a hosting for your websites today to get the best features to
-          buck ratio on the market
-        </Description>
-        <div className="mb-9 md:mb-24">
+        <m.div
+          transition={transition}
+          ref={ref}
+          variants={scaleUp}
+          initial="hidden"
+          animate={controls}
+        >
+          <Heading>Purchase</Heading>
+          <Description className={twJoin("my-9", "md:w-[646px]")}>
+            Start using getstatic as a hosting for your websites today to get the best features to
+            buck ratio on the market
+          </Description>
+        </m.div>
+        <m.div
+          ref={ref}
+          transition={transition}
+          variants={leftToRight}
+          initial="hidden"
+          animate={controls}
+          className="mb-9"
+        >
           <div className="flex w-full items-center justify-end">
             <div className="w-fit rounded-r-full rounded-tl-full bg-secondary px-3 py-1.5">
               <span className="text-primary">SAVE 20%</span>
@@ -45,10 +55,9 @@ export default function Purchase() {
             </div>
             <span>Annualy</span>
           </div>
-        </div>
+        </m.div>
       </div>
       <div
-        ref={ref}
         className={twJoin(
           "grid w-full grid-cols-1 grid-rows-1 gap-6 md:w-fit",
           "sm:grid-cols-2",
@@ -56,18 +65,18 @@ export default function Purchase() {
           "lg:grid-cols-4"
         )}
       >
-        {purchaseList.map((value) => (
+        {purchaseList.map((value, index) => (
           <m.div
-            variants={variants}
+            transition={{ duration: 0.4, delay: value.id / 2 + 0.2 }}
+            ref={ref}
+            variants={bottomToTop}
             initial="hidden"
-            animate="visible"
-            exit="exit"
+            animate={controls}
             key={value.id}
             className={twJoin(
               "flex cursor-pointer flex-col",
               "rounded-lg p-6",
-              "transition-all ease-in-out",
-              "hover:scale-105",
+              "hover:transition-all hover:ease-in-out",
               value.pricePerMonth === selectedPrice
                 ? "bg-primary text-white"
                 : "border-2 border-[#F4F4F4] bg-white text-black"
@@ -81,8 +90,8 @@ export default function Purchase() {
                 <span className="text-2xl">/month</span>
               </div>
               <ul className="my-6 space-y-3">
-                {value.features.map((list) => (
-                  <li className="flex items-center space-x-4" key={value.id}>
+                {value.features.map((list, index) => (
+                  <li className="flex items-center space-x-4" key={index + 1}>
                     <LazyLoadImage
                       src={
                         value.pricePerMonth === selectedPrice

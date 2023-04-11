@@ -1,4 +1,6 @@
+import { m } from "framer-motion";
 import { twJoin } from "tailwind-merge";
+import { bottomToTop } from "~/lib/utils/animation";
 import { partnersList } from "~/lib/utils/data";
 import LazyLoadImage from "../ui/LazyLoadImage";
 
@@ -14,9 +16,15 @@ export default function Partners() {
         )}
       >
         {partnersList.map((partner) => (
-          <div key={partner.id}>
+          <m.div
+            variants={bottomToTop}
+            transition={{ duration: 0.3, delay: partner.id / 2 }}
+            initial="hidden"
+            animate="visible"
+            key={partner.id}
+          >
             <LazyLoadImage src={partner.src} alt={partner.alt} />
-          </div>
+          </m.div>
         ))}
       </div>
     </section>

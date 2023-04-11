@@ -122,7 +122,7 @@ export const purchaseList = [
     priceAnnualy: 0,
   },
   {
-    id: 1,
+    id: 2,
     plan: "Starter",
     pricePerMonth: 5,
     features: [
@@ -135,7 +135,7 @@ export const purchaseList = [
     priceAnnualy: 60,
   },
   {
-    id: 2,
+    id: 3,
     plan: "Medium",
     pricePerMonth: 10,
     features: [
@@ -148,7 +148,7 @@ export const purchaseList = [
     priceAnnualy: 120,
   },
   {
-    id: 3,
+    id: 4,
     plan: "Large",
     pricePerMonth: 15,
     features: [

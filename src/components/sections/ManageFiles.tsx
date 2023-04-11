@@ -1,33 +1,57 @@
+import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
+import { useVisible } from "~/hooks/useVisible";
+import { leftToRight, rightToLeft, transition } from "~/lib/utils/animation";
 import { actionsList, manageFilesList } from "~/lib/utils/data";
 import Button from "../ui/Button";
-import { Heading, Paragraph } from "../ui/typography";
+import { Description, Heading } from "../ui/typography";
 
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function ManageFiles() {
+  const [ref, controls] = useVisible();
+
   return (
     <section
       className={twJoin(
-        "my-10 md:my-20",
-        "flex flex-col items-center justify-between",
-        "xl:flex-row"
+        "my-10 flex flex-col items-center justify-center text-center",
+        "lg:my-20 lg:flex-row lg:justify-between lg:text-start"
       )}
     >
-      <div className="flex flex-col">
+      <m.div
+        transition={transition}
+        ref={ref}
+        variants={leftToRight}
+        initial="hidden"
+        animate={controls}
+        className={twJoin(
+          "flex flex-col items-center justify-center",
+          "lg:items-start lg:justify-start"
+        )}
+      >
         <Heading>
           Manage Files In <span className="text-primary">The</span> Intuitive Way.
         </Heading>
-        <Paragraph className={twJoin("my-9 text-xl md:w-[31.313rem]")}>
+        <Description className={twJoin("my-9 text-xl", "lg:w-[31.313rem]")}>
           Don’t worry if you missed something. With Static, you can easily manage and edit your
           files on the fly.
-        </Paragraph>
+        </Description>
         <Button variant="primary" className="w-fit py-4 px-6">
           Try It Now
         </Button>
-      </div>
-      <div className="relative mt-9 flex flex-col items-start justify-start">
+      </m.div>
+      <m.div
+        transition={transition}
+        ref={ref}
+        variants={rightToLeft}
+        initial="hidden"
+        animate={controls}
+        className={twJoin(
+          "relative mt-9 flex w-full flex-col items-center justify-center",
+          "lg:mt-0 lg:w-fit lg:items-center lg:justify-center"
+        )}
+      >
         <LazyLoadImage
           src="/images/managefiles-blob.svg"
           alt="manage files blob"
@@ -35,12 +59,12 @@ export default function ManageFiles() {
         />
         <div
           className={twJoin(
-            "relative md:absolute md:left-10",
-            "flex flex-col items-center justify-center",
-            "md:flex-row"
+            "relative flex flex-col items-center justify-center",
+            "md:absolute md:flex-row",
+            "lg:left-10"
           )}
         >
-          <div className={twJoin("h-fit", "rounded-lg border-2 border-cultured bg-white", "p-12")}>
+          <div className={twJoin("h-fit rounded-lg", "border-2 border-cultured bg-white", "p-12")}>
             <ul className="flex flex-col justify-between">
               {manageFilesList.map((value) => (
                 <li
@@ -79,9 +103,11 @@ export default function ManageFiles() {
           </div>
           <div
             className={twJoin(
-              "absolute bottom-5 right-4 md:-right-32 md:bottom-10",
-              "rounded-lg border-2 border-cultured bg-white",
-              "p-7"
+              "absolute bottom-5 right-4 rounded-lg",
+              "border-2 border-cultured bg-white p-7",
+              "md:-right-32 md:bottom-10",
+              "lg:right-4",
+              "2xl:-right-32"
             )}
           >
             <ul className="flex flex-col items-start justify-center space-y-6">
@@ -94,7 +120,7 @@ export default function ManageFiles() {
             </ul>
           </div>
         </div>
-      </div>
+      </m.div>
     </section>
   );
 }

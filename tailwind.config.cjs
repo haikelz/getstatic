@@ -16,6 +16,9 @@ module.exports = {
         primary: "#1E854A",
         secondary: "#F5FCF8",
       },
+      backgroundImage: {
+        "purchase-blob": "url('/images/purchase-blob.svg')",
+      },
     },
   },
   plugins: [],

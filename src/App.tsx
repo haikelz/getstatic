@@ -1,4 +1,5 @@
-import { lazy } from "react";
+import { gsap } from "gsap";
+import { lazy, useEffect, useRef } from "react";
 import { twJoin } from "tailwind-merge";
 import Banner from "~/components/sections/Banner";
 import Benefits from "~/components/sections/Benefits";
@@ -19,18 +20,18 @@ export default function App() {
       )}
     >
       <Navbar />
-      <main className="flex w-full max-w-7xl flex-col items-center justify-center">
+      <main className="flex min-h-screen w-full max-w-7xl flex-col items-center justify-center">
         <Banner />
         <Partners />
         <Benefits />
         <ManageFiles />
-        <div className="relative my-10 flex flex-col items-center justify-center md:my-20">
+        <div className="relative my-10 flex w-full flex-col items-center justify-start lg:my-20">
           <LazyLoadImage
-            className="relative hidden translate-y-40 md:block"
+            className="relative mt-10 hidden translate-y-48 lg:block"
             src="/images/purchase-blob.svg"
             alt="purchase blob"
           />
-          <div className="flex flex-col items-center justify-center md:absolute">
+          <div className="flex w-full flex-col items-center justify-center lg:absolute">
             <Purchase />
             <TryItNow />
           </div>
