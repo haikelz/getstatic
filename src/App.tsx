@@ -1,5 +1,4 @@
-import { gsap } from "gsap";
-import { lazy, useEffect, useRef } from "react";
+import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
 import Banner from "~/components/sections/Banner";
 import Benefits from "~/components/sections/Benefits";
@@ -15,23 +14,31 @@ const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 export default function App() {
   return (
     <div
-      className={twJoin(
-        "flex w-full max-w-full flex-col items-center justify-center bg-[#FFFFFE] p-4"
-      )}
+      className={twJoin("flex w-full max-w-full flex-col items-center justify-center bg-[#FFFFFE]")}
     >
       <Navbar />
-      <main className="flex min-h-screen w-full max-w-7xl flex-col items-center justify-center">
+      <main
+        className={twJoin(
+          "flex min-h-screen",
+          "w-full max-w-7xl flex-col items-center justify-center p-4"
+        )}
+      >
         <Banner />
         <Partners />
         <Benefits />
         <ManageFiles />
-        <div className="relative my-10 flex w-full flex-col items-center justify-start lg:my-20">
+        <div
+          className={twJoin(
+            "relative my-10 flex w-full flex-col items-center justify-start",
+            "lg:my-20"
+          )}
+        >
           <LazyLoadImage
-            className="relative mt-10 hidden translate-y-48 lg:block"
+            className="relative mt-10 translate-y-48 max-[1280px]:hidden"
             src="/images/purchase-blob.svg"
             alt="purchase blob"
           />
-          <div className="flex w-full flex-col items-center justify-center lg:absolute">
+          <div className="flex w-full flex-col items-center justify-center min-[1281px]:absolute">
             <Purchase />
             <TryItNow />
           </div>

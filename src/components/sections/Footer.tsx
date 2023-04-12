@@ -1,5 +1,8 @@
+import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
+import { useVisible } from "~/hooks";
+import { bottomToTop, transition } from "~/lib/utils/animation";
 import { footerList } from "~/lib/utils/data";
 import EmailInput from "../ui/EmailInput";
 import { Paragraph } from "../ui/typography";
@@ -7,20 +10,30 @@ import { Paragraph } from "../ui/typography";
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function Footer() {
+  const [ref, controls] = useVisible();
+
   return (
-    <footer
+    <m.footer
+      ref={ref}
+      variants={bottomToTop}
+      transition={transition}
+      initial="hidden"
+      animate={controls}
       className={twJoin(
-        "my-10 flex w-full flex-col items-start justify-start font-satoshi",
+        "flex w-full flex-col items-start justify-start",
+        "overflow-hidden font-satoshi",
+        "sm:my-10",
         "lg:relative lg:flex-row"
       )}
     >
       <div
         className={twJoin(
-          "flex flex-col items-start justify-center font-medium",
-          "md:flex-row md:items-start md:justify-start md:space-x-10"
+          "flex w-full flex-col items-start justify-center font-medium",
+          "md:items-start md:justify-start",
+          "lg:flex-row lg:space-x-20"
         )}
       >
-        <div className="mb-10 flex flex-col justify-start">
+        <div className="mb-9 flex flex-col justify-start">
           <div className="flex items-center justify-start space-x-3">
             <div className="rounded-full bg-secondary p-2">
               <LazyLoadImage className="h-5 w-5" src="/images/logo-icon.svg" alt="logo" />
@@ -36,14 +49,15 @@ export default function Footer() {
         </div>
         <div
           className={twJoin(
-            "grid grid-cols-1 grid-rows-1 gap-10",
-            "sm:grid-cols-2 sm:grid-rows-2",
-            "lg:grid-cols-4 lg:grid-rows-1"
+            "grid w-full grid-cols-1 grid-rows-1 gap-10",
+            "min-[535px]:grid-cols-2",
+            "sm:grid-cols-3",
+            "lg:grid-cols-4"
           )}
         >
           {footerList.map((value) => (
-            <div key={value.id}>
-              <span className="font-lexend text-xl font-medium">{value.title}</span>
+            <div className="w-fit" key={value.id}>
+              <span className="font-lexend text-xl font-medium text-darkgrey">{value.title}</span>
               <ul className="mt-4 space-y-4">
                 {value.list.map((li) => (
                   <li key={li}>
@@ -60,15 +74,20 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-          <div>
+          <div className="w-full">
             <span className="font-lexend text-xl font-medium text-darkgrey">Stay in touch</span>
             <div className="mt-6 flex w-full flex-col">
               <EmailInput />
               <div className="mt-3 space-x-2">
-                <input type="checkbox" name="email" />
+                <input type="checkbox" name="checkbox-privacy" />
                 <span className="font-satoshi text-sm text-gray">
                   I accept{" "}
-                  <span className="cursor-pointer font-medium underline decoration-gray decoration-2 underline-offset-4">
+                  <span
+                    className={twJoin(
+                      "cursor-pointer font-medium underline",
+                      "decoration-gray decoration-2 underline-offset-4"
+                    )}
+                  >
                     Privacy Policy
                   </span>
                 </span>
@@ -77,6 +96,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </m.footer>
   );
 }

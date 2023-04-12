@@ -1,6 +1,6 @@
 import { m } from "framer-motion";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks/useVisible";
+import { useVisible } from "~/hooks";
 import { leftToRight, rightToLeft, transition } from "~/lib/utils/animation";
 import { benefitsList } from "~/lib/utils/data";
 import Button from "../ui/Button";
@@ -14,7 +14,9 @@ export default function Benefits() {
     <section
       className={twJoin(
         "relative my-10",
-        "flex w-full flex-col-reverse items-center justify-center text-center",
+        "flex w-full flex-col-reverse items-start justify-start text-start",
+        "sm:items-center sm:justify-center sm:text-center",
+        "lg:justify-start lg:text-start",
         "lg:space-x-10 lg:text-left",
         "lg:my-20 lg:flex-row lg:justify-between"
       )}
@@ -53,7 +55,7 @@ export default function Benefits() {
                 "hover:scale-105"
               )}
             >
-              <div className="flex flex-col items-center justify-center rounded-xl text-center">
+              <div className="flex flex-col items-center justify-center rounded-xl text-center text-darkgrey">
                 <div
                   className={twJoin(
                     "flex items-center justify-center",

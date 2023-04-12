@@ -1,7 +1,7 @@
 import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks/useVisible";
+import { useVisible } from "~/hooks";
 import { leftToRight, rightToLeft, transition } from "~/lib/utils/animation";
 import { actionsList, manageFilesList } from "~/lib/utils/data";
 import Button from "../ui/Button";
@@ -15,7 +15,8 @@ export default function ManageFiles() {
   return (
     <section
       className={twJoin(
-        "my-10 flex flex-col items-center justify-center text-center",
+        "my-10 flex flex-col items-start justify-start",
+        "sm:items-center sm:justify-center sm:text-center",
         "lg:my-20 lg:flex-row lg:justify-between lg:text-start"
       )}
     >
@@ -26,8 +27,9 @@ export default function ManageFiles() {
         initial="hidden"
         animate={controls}
         className={twJoin(
-          "flex flex-col items-center justify-center",
-          "lg:items-start lg:justify-start"
+          "flex flex-col items-start justify-start text-start",
+          "sm:items-center sm:justify-center sm:text-center",
+          "lg:items-start lg:justify-start lg:text-start"
         )}
       >
         <Heading>
@@ -48,8 +50,8 @@ export default function ManageFiles() {
         initial="hidden"
         animate={controls}
         className={twJoin(
-          "relative mt-9 flex w-full flex-col items-center justify-center",
-          "lg:mt-0 lg:w-fit lg:items-center lg:justify-center"
+          "relative mt-9 flex w-full flex-col items-center justify-center text-darkgrey",
+          "lg:mt-0 lg:w-[80%] lg:items-center lg:justify-center"
         )}
       >
         <LazyLoadImage
@@ -60,8 +62,7 @@ export default function ManageFiles() {
         <div
           className={twJoin(
             "relative flex flex-col items-center justify-center",
-            "md:absolute md:flex-row",
-            "lg:left-10"
+            "md:absolute md:flex-row"
           )}
         >
           <div className={twJoin("h-fit rounded-lg", "border-2 border-cultured bg-white", "p-12")}>
@@ -95,7 +96,7 @@ export default function ManageFiles() {
                   {value.name === "index.html" || value.name === "logo.png" ? (
                     <span className="font-satoshi text-gray">feb 13, 2023</span>
                   ) : (
-                    <div className="h-0.5 w-6 bg-black"></div>
+                    <div className="h-0.5 w-6 bg-darkgrey"></div>
                   )}
                 </li>
               ))}
@@ -114,7 +115,7 @@ export default function ManageFiles() {
               {actionsList.map((value) => (
                 <li className="flex items-center justify-center space-x-6" key={value.id}>
                   <LazyLoadImage src={value.icon} alt={value.name.toLowerCase()} />
-                  <span>{value.name}</span>
+                  <span className="text-darkgrey">{value.name}</span>
                 </li>
               ))}
             </ul>

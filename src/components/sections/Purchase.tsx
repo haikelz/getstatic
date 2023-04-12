@@ -1,7 +1,7 @@
 import { m } from "framer-motion";
 import { lazy, useState } from "react";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks/useVisible";
+import { useVisible } from "~/hooks";
 import { bottomToTop, leftToRight, scaleUp, transition } from "~/lib/utils/animation";
 import { purchaseList } from "~/lib/utils/data";
 import Button from "../ui/Button";
@@ -14,7 +14,7 @@ export default function Purchase() {
   const [selectedPrice, setSelectedPrice] = useState<number>(0);
 
   return (
-    <section className={twJoin("mb-10 flex flex-col items-center justify-center")}>
+    <section className="mb-10 flex w-full flex-col items-center justify-center lg:mb-20">
       <div className="flex flex-col items-center justify-center text-center">
         <m.div
           transition={transition}
@@ -35,10 +35,18 @@ export default function Purchase() {
           variants={leftToRight}
           initial="hidden"
           animate={controls}
-          className="mb-9"
+          className="mb-9 w-full min-[479px]:w-fit"
         >
-          <div className="flex w-full items-center justify-end">
-            <div className="w-fit rounded-r-full rounded-tl-full bg-secondary px-3 py-1.5">
+          <div
+            className={twJoin("flex w-full items-center justify-end", "min-[479px]:translate-x-24")}
+          >
+            <div
+              className={twJoin(
+                "w-fit",
+                "rounded-r-full rounded-tl-full",
+                "bg-secondary px-3 py-1.5"
+              )}
+            >
               <span className="text-primary">SAVE 20%</span>
             </div>
           </div>
@@ -59,13 +67,13 @@ export default function Purchase() {
       </div>
       <div
         className={twJoin(
-          "grid w-full grid-cols-1 grid-rows-1 gap-6 md:w-fit",
+          "grid w-full grid-cols-1 grid-rows-1 gap-6",
           "sm:grid-cols-2",
-          "md:grid-cols-3",
-          "lg:grid-cols-4"
+          "lg:grid-cols-3",
+          "xl:grid-cols-4"
         )}
       >
-        {purchaseList.map((value, index) => (
+        {purchaseList.map((value) => (
           <m.div
             transition={{ duration: 0.4, delay: value.id / 2 + 0.2 }}
             ref={ref}
@@ -79,7 +87,7 @@ export default function Purchase() {
               "hover:transition-all hover:ease-in-out",
               value.pricePerMonth === selectedPrice
                 ? "bg-primary text-white"
-                : "border-2 border-[#F4F4F4] bg-white text-black"
+                : "border-2 border-[#F4F4F4] bg-white text-darkgrey"
             )}
             onClick={() => setSelectedPrice(value.pricePerMonth)}
           >

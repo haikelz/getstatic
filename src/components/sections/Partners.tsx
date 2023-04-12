@@ -6,9 +6,7 @@ import LazyLoadImage from "../ui/LazyLoadImage";
 
 export default function Partners() {
   return (
-    <section
-      className={twJoin("my-10 flex w-full items-center justify-center", "md:my-20 md:flex-row")}
-    >
+    <section className={twJoin("my-10 flex w-full items-center justify-center", "md:my-20")}>
       <div
         className={twJoin(
           "flex flex-col items-center justify-center space-x-0 space-y-10",

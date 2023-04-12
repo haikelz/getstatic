@@ -25,4 +25,4 @@ export const appearAnimation: Variants = {
   visible: { opacity: 1 },
 };
 
-export const transition: Transition = { duration: 0.4, delay: 0.3 };
+export const transition: Transition = { duration: 0.4, delay: 0.4 };

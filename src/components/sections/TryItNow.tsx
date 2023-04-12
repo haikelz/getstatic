@@ -1,8 +1,8 @@
 import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks/useVisible";
-import { bottomToTop, scaleUp } from "~/lib/utils/animation";
+import { useVisible } from "~/hooks";
+import { scaleUp, transition } from "~/lib/utils/animation";
 import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
 
@@ -15,12 +15,12 @@ export default function TryItNow() {
     <m.section
       ref={ref}
       variants={scaleUp}
-      transition={{ duration: 0.4, delay: 0.3 }}
+      transition={transition}
       initial="hidden"
       animate={controls}
       className={twJoin(
-        "mt-10 flex flex-col items-center justify-center text-center md:mt-20",
-        "md:w-[646px]"
+        "my-10 flex flex-col items-center justify-center text-center",
+        "md:w-[646px] min-[1281px]:my-20"
       )}
     >
       <Heading>Try It Now!</Heading>
