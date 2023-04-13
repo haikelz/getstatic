@@ -14,13 +14,13 @@
 
 ![ss1](/public/docs/ss-1.png)
 
-![ss1](/public/docs/ss-2.png)
+![ss2](/public/docs/ss-2.png)
 
-![ss1](/public/docs/ss-3.png)
+![ss3](/public/docs/ss-3.png)
 
-![ss1](/public/docs/ss-4.png)
+![ss4](/public/docs/ss-4.png)
 
-![ss1](/public/docs/ss-5.png)
+![ss5](/public/docs/ss-5.png)
 
 ## Credit
 

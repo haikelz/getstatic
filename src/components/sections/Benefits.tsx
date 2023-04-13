@@ -1,6 +1,6 @@
 import { m } from "framer-motion";
 import { twJoin } from "tailwind-merge";
-import { leftToRight, rightToLeft, transition } from "~/lib/utils/animation";
+import { leftToRight, rightToLeft } from "~/lib/utils/animation";
 import { benefitsList } from "~/lib/utils/data";
 import Button from "../ui/Button";
 import LazyLoadImage from "../ui/LazyLoadImage";
@@ -22,7 +22,6 @@ export default function Benefits() {
       <m.div
         viewport={{ once: true }}
         variants={leftToRight}
-        transition={transition}
         initial="hidden"
         whileInView="visible"
         className={twJoin(
@@ -74,7 +73,6 @@ export default function Benefits() {
       </m.div>
       <m.div
         viewport={{ once: true }}
-        transition={transition}
         variants={rightToLeft}
         initial="hidden"
         whileInView="visible"

@@ -1,7 +1,7 @@
 import { m } from "framer-motion";
 import { lazy, useState } from "react";
 import { twJoin } from "tailwind-merge";
-import { bottomToTop, leftToRight, scaleUp, transition } from "~/lib/utils/animation";
+import { bottomToTop, leftToRight, scaleUp } from "~/lib/utils/animation";
 import { purchaseList } from "~/lib/utils/data";
 import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
@@ -17,13 +17,7 @@ export default function Purchase() {
       className="mb-10 flex w-full flex-col items-center justify-center lg:mb-20"
     >
       <div className="flex flex-col items-center justify-center text-center">
-        <m.div
-          viewport={{ once: true }}
-          transition={transition}
-          variants={scaleUp}
-          initial="hidden"
-          whileInView="visible"
-        >
+        <m.div viewport={{ once: true }} variants={scaleUp} initial="hidden" whileInView="visible">
           <Heading>Purchase</Heading>
           <Description className={twJoin("my-9", "md:w-[646px]")}>
             Start using getstatic as a hosting for your websites today to get the best features to
@@ -32,7 +26,6 @@ export default function Purchase() {
         </m.div>
         <m.div
           viewport={{ once: true }}
-          transition={transition}
           variants={leftToRight}
           initial="hidden"
           whileInView="visible"
@@ -77,7 +70,7 @@ export default function Purchase() {
         {purchaseList.map((value) => (
           <m.div
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: value.id / 2 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
             variants={bottomToTop}
             initial="hidden"
             whileInView="visible"

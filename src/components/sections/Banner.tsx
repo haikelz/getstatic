@@ -1,6 +1,6 @@
 import { m } from "framer-motion";
 import { twJoin } from "tailwind-merge";
-import { leftToRight, rightToLeft, transition } from "~/lib/utils/animation";
+import { leftToRight, rightToLeft } from "~/lib/utils/animation";
 import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
 
@@ -15,11 +15,10 @@ export default function Banner() {
       )}
     >
       <m.div
-        transition={transition}
+        variants={leftToRight}
         initial="hidden"
         animate="visible"
         exit="exit"
-        variants={leftToRight}
         className="lg:h-[299px] lg:w-[536px]"
       >
         <Heading>
@@ -63,7 +62,6 @@ export default function Banner() {
         </div>
       </m.div>
       <m.div
-        transition={transition}
         variants={rightToLeft}
         initial="hidden"
         animate="visible"

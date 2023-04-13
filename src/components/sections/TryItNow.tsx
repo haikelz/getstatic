@@ -1,7 +1,7 @@
 import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
-import { scaleUp, transition } from "~/lib/utils/animation";
+import { scaleUp } from "~/lib/utils/animation";
 import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
 
@@ -12,7 +12,6 @@ export default function TryItNow() {
     <m.section
       viewport={{ once: true }}
       variants={scaleUp}
-      transition={transition}
       initial="hidden"
       whileInView="visible"
       className={twJoin(

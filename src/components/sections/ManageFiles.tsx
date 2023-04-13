@@ -1,7 +1,7 @@
 import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
-import { leftToRight, rightToLeft, transition } from "~/lib/utils/animation";
+import { leftToRight, rightToLeft } from "~/lib/utils/animation";
 import { actionsList, manageFilesList } from "~/lib/utils/data";
 import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
@@ -19,7 +19,6 @@ export default function ManageFiles() {
     >
       <m.div
         viewport={{ once: true }}
-        transition={transition}
         variants={leftToRight}
         initial="hidden"
         whileInView="visible"
@@ -42,7 +41,6 @@ export default function ManageFiles() {
       </m.div>
       <m.div
         viewport={{ once: true }}
-        transition={transition}
         variants={rightToLeft}
         initial="hidden"
         whileInView="visible"
