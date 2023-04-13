@@ -1,10 +1,18 @@
+import { AnimatePresence, m } from "framer-motion";
 import { useState } from "react";
 import { twJoin } from "tailwind-merge";
+import { leftToRight, rightToLeft } from "~/lib/utils/animation";
 import { navbarItemList } from "~/lib/utils/data";
 import Button from "../ui/Button";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const itemClass = twJoin(
+    "cursor-pointer font-satoshi font-medium text-black",
+    "decoration-2",
+    "hover:underline hover:underline-offset-4"
+  );
 
   return (
     <>
@@ -34,38 +42,17 @@ export default function Navbar() {
           <ul className="flex space-x-8">
             {navbarItemList.map((item) => (
               <li key={item.id}>
-                <a
-                  href={item.href}
-                  className={twJoin(
-                    "cursor-pointer font-satoshi font-medium text-black",
-                    "decoration-2 transition-all ease-in-out",
-                    "hover:underline hover:underline-offset-4"
-                  )}
-                >
+                <a href={item.href} className={itemClass}>
                   {item.name}
                 </a>
               </li>
             ))}
           </ul>
           <div className="space-x-8">
-            <a
-              href="#top"
-              className={twJoin(
-                "cursor-pointer font-satoshi font-medium text-black",
-                "decoration-2 transition-all ease-in-out",
-                "hover:underline hover:underline-offset-4"
-              )}
-            >
+            <a href="#top" className={itemClass}>
               Contact
             </a>
-            <a
-              href="#top"
-              className={twJoin(
-                "cursor-pointer font-satoshi font-medium text-black",
-                "decoration-2 transition-all ease-in-out",
-                "hover:underline hover:underline-offset-4"
-              )}
-            >
+            <a href="#top" className={itemClass}>
               Login
             </a>
             <Button
@@ -85,9 +72,11 @@ export default function Navbar() {
           )}
         >
           <div className="flex w-full justify-between">
-            <div className="h-fit rounded-full bg-secondary p-3">
-              <img className="h-5 w-5" src="/images/logo-icon.svg" alt="logo" loading="eager" />
-            </div>
+            <a href="#top">
+              <div className="h-fit rounded-full bg-secondary p-3">
+                <img className="h-5 w-5" src="/images/logo-icon.svg" alt="logo" loading="eager" />
+              </div>
+            </a>
             <button
               type="button"
               aria-label="close and open navbar"
@@ -99,49 +88,41 @@ export default function Navbar() {
           {isOpen ? (
             <div className="mt-4 flex w-full flex-col">
               <ul className="space-y-4">
-                {navbarItemList.map((value) => (
-                  <li key={value.id}>
-                    <a
-                      className={twJoin(
-                        "cursor-pointer font-satoshi font-medium text-black",
-                        "decoration-2 transition-all ease-in-out",
-                        "hover:underline hover:underline-offset-4"
-                      )}
-                      href={value.href}
-                    >
-                      {value.name}
-                    </a>
-                  </li>
+                {navbarItemList.map((item) => (
+                  <AnimatePresence key={item.id} mode="wait">
+                    <m.li key={item.id} variants={leftToRight} initial="hidden" animate="visible">
+                      <a className={itemClass} href={item.href}>
+                        {item.name}
+                      </a>
+                    </m.li>
+                  </AnimatePresence>
                 ))}
-                <li>
-                  <a
-                    className={twJoin(
-                      "cursor-pointer font-satoshi font-medium text-black",
-                      "decoration-2 transition-all ease-in-out",
-                      "hover:underline hover:underline-offset-4"
-                    )}
-                    href="#top"
+                <AnimatePresence key="contact" mode="wait">
+                  <m.li variants={leftToRight} initial="hidden" animate="visible">
+                    <a className={itemClass} href="#top">
+                      Contact
+                    </a>
+                  </m.li>
+                </AnimatePresence>
+                <AnimatePresence key="login" mode="wait">
+                  <m.li variants={leftToRight} initial="hidden" animate="visible">
+                    <a className={itemClass} href="#top">
+                      Login
+                    </a>
+                  </m.li>
+                </AnimatePresence>
+                <AnimatePresence key="sign up" mode="wait">
+                  <m.li
+                    variants={rightToLeft}
+                    initial="hidden"
+                    animate="visible"
+                    className="flex w-full justify-end"
                   >
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className={twJoin(
-                      "cursor-pointer font-satoshi font-medium text-black",
-                      "decoration-2 transition-all ease-in-out",
-                      "hover:underline hover:underline-offset-4"
-                    )}
-                    href="#top"
-                  >
-                    Login
-                  </a>
-                </li>
-                <li>
-                  <Button variant="secondary" className="px-4 py-3.5 text-primary">
-                    Sign Up
-                  </Button>
-                </li>
+                    <Button variant="secondary" className="px-4 py-3.5 text-primary">
+                      Sign Up
+                    </Button>
+                  </m.li>
+                </AnimatePresence>
               </ul>
             </div>
           ) : null}

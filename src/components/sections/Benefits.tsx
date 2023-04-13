@@ -14,8 +14,7 @@ export default function Benefits() {
         "relative my-10",
         "flex w-full flex-col-reverse items-start justify-start text-start",
         "sm:items-center sm:justify-center sm:text-center",
-        "lg:justify-start lg:text-start",
-        "lg:space-x-10 lg:text-left",
+        "lg:justify-start lg:space-x-10 lg:text-start",
         "lg:my-20 lg:flex-row lg:justify-between"
       )}
     >
@@ -41,9 +40,9 @@ export default function Benefits() {
             "sm:absolute sm:grid-cols-2 sm:grid-rows-2"
           )}
         >
-          {benefitsList.map((value) => (
+          {benefitsList.map((item) => (
             <div
-              key={value.id}
+              key={item.id}
               className={twJoin(
                 "cursor-pointer rounded-md",
                 "border-2 border-[#F4F4F4] bg-white",
@@ -53,18 +52,23 @@ export default function Benefits() {
                 "active:scale-95"
               )}
             >
-              <div className="flex flex-col items-center justify-center rounded-xl text-center text-darkgrey">
+              <div
+                className={twJoin(
+                  "flex flex-col items-center justify-center",
+                  "rounded-xl text-center text-darkgrey"
+                )}
+              >
                 <div
                   className={twJoin(
                     "flex items-center justify-center",
                     "rounded-full bg-secondary p-5"
                   )}
                 >
-                  <LazyLoadImage className="h-7 w-7" src={value.icon} alt="storage" />
+                  <LazyLoadImage className="h-7 w-7" src={item.icon} alt="storage" />
                 </div>
-                <span className="my-6 font-bold">{value.title}</span>
+                <span className="my-6 font-bold">{item.title}</span>
                 <div className="md:w-[240px]">
-                  <Paragraph>{value.description}</Paragraph>
+                  <Paragraph>{item.description}</Paragraph>
                 </div>
               </div>
             </div>
@@ -76,7 +80,14 @@ export default function Benefits() {
         variants={rightToLeft}
         initial="hidden"
         whileInView="visible"
-        className={twJoin("mb-9", "lg:mb-0 lg:w-[501px]")}
+        className={twJoin(
+          "mb-9",
+          "flex flex-col items-start justify-start text-start",
+          "sm:flex sm:w-[600px]",
+          "sm:flex-col sm:items-center sm:justify-center sm:text-center",
+          "lg:mb-0 lg:w-[501px]",
+          "lg:items-start lg:justify-start lg:text-start"
+        )}
       >
         <Heading className="capitalize">
           Hosting solution with <span className="text-primary">benefits</span>

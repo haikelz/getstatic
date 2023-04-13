@@ -19,13 +19,18 @@ export default function Banner() {
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="lg:h-[299px] lg:w-[536px]"
+        className={twJoin(
+          "sm:flex sm:flex-col sm:items-center sm:justify-center sm:text-center",
+          "lg:block lg:h-[299px] lg:w-[536px] lg:text-start"
+        )}
       >
         <Heading>
           Get <span className="text-primary">Static</span> Site Hosting{" "}
           <span className="text-primary">Freedom</span>
         </Heading>
-        <Description className={twJoin("my-9 text-xl font-medium text-gray", "lg:w-[387px]")}>
+        <Description
+          className={twJoin("my-9 text-xl font-medium text-gray", "sm:w-[500px]", "lg:w-[387px]")}
+        >
           Drag-n-drop a file with your page or a website and we will take care of the rest.
         </Description>
         <div
@@ -50,7 +55,8 @@ export default function Banner() {
           <button
             type="button"
             className={twJoin(
-              "flex space-x-3 px-4 py-3.5",
+              "flex items-center justify-center space-x-3",
+              "px-4 py-3.5",
               "transition-all ease-in-out",
               "hover:-translate-y-1.5"
             )}

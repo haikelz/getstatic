@@ -31,7 +31,7 @@ export default function ManageFiles() {
         <Heading>
           Manage Files In <span className="text-primary">The</span> Intuitive Way.
         </Heading>
-        <Description className={twJoin("my-9 text-xl", "lg:w-[31.313rem]")}>
+        <Description className={twJoin("my-9 text-xl", "sm:w-[31.313rem]")}>
           Don’t worry if you missed something. With Static, you can easily manage and edit your
           files on the fly.
         </Description>
@@ -64,35 +64,38 @@ export default function ManageFiles() {
         >
           <div className={twJoin("h-fit rounded-lg", "border-2 border-cultured bg-white", "p-12")}>
             <ul className="flex flex-col justify-between">
-              {manageFilesList.map((value) => (
+              {manageFilesList.map((item) => (
                 <li
                   className={twJoin(
                     "flex items-center justify-between space-x-24",
-                    value.name === "logo.png" ? "" : "mb-4 border-b border-b-cultured pb-6"
+                    item.name === "logo.png" ? "" : "mb-4 border-b border-b-cultured pb-6"
                   )}
-                  key={value.id}
+                  key={item.id}
                 >
                   <div className="flex items-center justify-center space-x-6">
                     <div
                       className={twJoin(
-                        value.name === "index.html"
+                        "flex h-7 w-7 items-center justify-center",
+                        item.name === "index.html"
                           ? "rounded-sm bg-cultured p-2"
-                          : value.name === "logo.png"
+                          : item.name === "logo.png"
                           ? "rounded-full bg-[#B0EAC8] p-1.5"
                           : ""
                       )}
                     >
                       <LazyLoadImage
-                        className={value.name === "logo.png" ? "h-4 w-4" : ""}
-                        src={value.icon}
-                        alt={value.name}
+                        className={
+                          item.name === "logo.png" || item.name === "index.html" ? "h-7 w-7" : ""
+                        }
+                        src={item.icon}
+                        alt={item.name}
                       />
                     </div>
-                    <span className="font-satoshi text-xl font-medium">{value.name}</span>
+                    <span className="font-satoshi text-xl font-medium">{item.name}</span>
                   </div>
-                  {value.name === "index.html" ? (
+                  {item.name === "index.html" ? (
                     <span className="font-satoshi text-gray">feb 13, 2023</span>
-                  ) : value.name === "logo.png" ? (
+                  ) : item.name === "logo.png" ? (
                     <span className="font-satoshi text-gray">feb 15, 2023</span>
                   ) : (
                     <div className="h-0.5 w-6 bg-darkgrey"></div>
@@ -111,10 +114,10 @@ export default function ManageFiles() {
             )}
           >
             <ul className="flex flex-col items-start justify-center space-y-6">
-              {actionsList.map((value) => (
-                <li className="flex items-center justify-center space-x-6" key={value.id}>
-                  <LazyLoadImage src={value.icon} alt={value.name.toLowerCase()} />
-                  <span className="text-darkgrey">{value.name}</span>
+              {actionsList.map((item) => (
+                <li className="flex items-center justify-center space-x-6" key={item.id}>
+                  <LazyLoadImage src={item.icon} alt={item.name.toLowerCase()} />
+                  <span className="text-darkgrey">{item.name}</span>
                 </li>
               ))}
             </ul>
