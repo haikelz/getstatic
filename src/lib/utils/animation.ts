@@ -20,9 +20,4 @@ export const bottomToTop: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export const appearAnimation: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
-
 export const transition: Transition = { duration: 0.4, delay: 0.4 };

@@ -1,7 +1,6 @@
 import { m } from "framer-motion";
 import { lazy, useState } from "react";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks";
 import { bottomToTop, leftToRight, scaleUp, transition } from "~/lib/utils/animation";
 import { purchaseList } from "~/lib/utils/data";
 import Button from "../ui/Button";
@@ -10,18 +9,20 @@ import { Description, Heading } from "../ui/typography";
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function Purchase() {
-  const [ref, controls] = useVisible();
   const [selectedPrice, setSelectedPrice] = useState<number>(0);
 
   return (
-    <section className="mb-10 flex w-full flex-col items-center justify-center lg:mb-20">
+    <section
+      id="pricing"
+      className="mb-10 flex w-full flex-col items-center justify-center lg:mb-20"
+    >
       <div className="flex flex-col items-center justify-center text-center">
         <m.div
+          viewport={{ once: true }}
           transition={transition}
-          ref={ref}
           variants={scaleUp}
           initial="hidden"
-          animate={controls}
+          whileInView="visible"
         >
           <Heading>Purchase</Heading>
           <Description className={twJoin("my-9", "md:w-[646px]")}>
@@ -30,11 +31,11 @@ export default function Purchase() {
           </Description>
         </m.div>
         <m.div
-          ref={ref}
+          viewport={{ once: true }}
           transition={transition}
           variants={leftToRight}
           initial="hidden"
-          animate={controls}
+          whileInView="visible"
           className="mb-9 w-full min-[479px]:w-fit"
         >
           <div
@@ -75,16 +76,15 @@ export default function Purchase() {
       >
         {purchaseList.map((value) => (
           <m.div
-            transition={{ duration: 0.4, delay: value.id / 2 + 0.2 }}
-            ref={ref}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: value.id / 2 }}
             variants={bottomToTop}
             initial="hidden"
-            animate={controls}
+            whileInView="visible"
             key={value.id}
             className={twJoin(
               "flex cursor-pointer flex-col",
               "rounded-lg p-6",
-              "hover:transition-all hover:ease-in-out",
               value.pricePerMonth === selectedPrice
                 ? "bg-primary text-white"
                 : "border-2 border-[#F4F4F4] bg-white text-darkgrey"
@@ -120,7 +120,7 @@ export default function Purchase() {
                 variant={value.pricePerMonth === selectedPrice ? "secondary" : "primary"}
                 aria-label="proceed"
               >
-                Proceed with {value.plan}
+                {value.plan === "Free" ? "Try now for " : "Proceed with "} {value.plan}
               </Button>
             </div>
             <span
@@ -128,10 +128,10 @@ export default function Purchase() {
                 value.pricePerMonth === selectedPrice ? "text-white" : "font-medium text-gray"
               }
             >
-              {value.pricePerMonth === selectedPrice
+              {value.plan === "Free"
                 ? "No credit card required."
                 : `$${value.priceAnnualy} billed annualy. Save $${
-                    value.priceAnnualy / value.pricePerMonth
+                    (value.priceAnnualy / value.pricePerMonth) * (value.pricePerMonth / 5)
                   }.`}
             </span>
           </m.div>

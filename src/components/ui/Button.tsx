@@ -11,8 +11,8 @@ export default function Button({ children, className, variant }: PrimaryButtonPr
     <button
       type="button"
       className={twMerge(
-        "font-abeezee text-[16px] leading-[19px] text-white",
-        "rounded-md transition-all ease-in-out",
+        "font-satoshi text-base font-bold text-[#F5F4F7]",
+        "rounded-lg transition-all ease-in-out",
         variant === "primary"
           ? "bg-primary hover:bg-orange-700"
           : "bg-secondary hover:bg-neutral-200",

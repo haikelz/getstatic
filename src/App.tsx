@@ -20,7 +20,10 @@ export default function App() {
       <main
         className={twJoin(
           "flex min-h-screen",
-          "w-full max-w-7xl flex-col items-center justify-center p-4"
+          "mt-20 w-full max-w-7xl flex-col items-center justify-center",
+          "overflow-hidden p-4",
+          "min-[923px]:mt-10",
+          "lg:mt-20"
         )}
       >
         <Banner />

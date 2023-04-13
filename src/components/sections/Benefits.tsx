@@ -1,6 +1,5 @@
 import { m } from "framer-motion";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks";
 import { leftToRight, rightToLeft, transition } from "~/lib/utils/animation";
 import { benefitsList } from "~/lib/utils/data";
 import Button from "../ui/Button";
@@ -8,10 +7,9 @@ import LazyLoadImage from "../ui/LazyLoadImage";
 import { Description, Heading, Paragraph } from "../ui/typography";
 
 export default function Benefits() {
-  const [ref, controls] = useVisible();
-
   return (
     <section
+      id="benefits"
       className={twJoin(
         "relative my-10",
         "flex w-full flex-col-reverse items-start justify-start text-start",
@@ -22,11 +20,11 @@ export default function Benefits() {
       )}
     >
       <m.div
-        ref={ref}
+        viewport={{ once: true }}
         variants={leftToRight}
         transition={transition}
         initial="hidden"
-        animate={controls}
+        whileInView="visible"
         className={twJoin(
           "relative",
           "flex w-full flex-col items-center justify-center",
@@ -52,7 +50,8 @@ export default function Benefits() {
                 "border-2 border-[#F4F4F4] bg-white",
                 "px-4 py-7",
                 "transition-all ease-in-out",
-                "hover:scale-105"
+                "hover:scale-105",
+                "active:scale-95"
               )}
             >
               <div className="flex flex-col items-center justify-center rounded-xl text-center text-darkgrey">
@@ -74,11 +73,11 @@ export default function Benefits() {
         </div>
       </m.div>
       <m.div
-        ref={ref}
+        viewport={{ once: true }}
         transition={transition}
         variants={rightToLeft}
         initial="hidden"
-        animate={controls}
+        whileInView="visible"
         className={twJoin("mb-9", "lg:mb-0 lg:w-[501px]")}
       >
         <Heading className="capitalize">
@@ -88,7 +87,7 @@ export default function Benefits() {
           Turn your ideas into reality with Static. With a lot of powerful features, we guarantee
           simplicity and clarity.
         </Description>
-        <Button variant="primary" className="py-3.5 px-4">
+        <Button variant="primary" className={twJoin("px-4 py-3.5", "hover:-translate-y-1.5")}>
           Start for Free
         </Button>
       </m.div>

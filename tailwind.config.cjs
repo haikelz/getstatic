@@ -7,7 +7,6 @@ module.exports = {
       fontFamily: {
         lexend: ["Lexend"],
         satoshi: ["Satoshi"],
-        abeezee: ["ABeeZee-Italic"],
       },
       colors: {
         darkgrey: "#121212",
@@ -15,9 +14,6 @@ module.exports = {
         cultured: "#F4F4F4",
         primary: "#1E854A",
         secondary: "#F5FCF8",
-      },
-      backgroundImage: {
-        "purchase-blob": "url('/images/purchase-blob.svg')",
       },
     },
   },

@@ -1,9 +1,7 @@
-import { lazy, useState } from "react";
+import { useState } from "react";
 import { twJoin } from "tailwind-merge";
 import { navbarItemList } from "~/lib/utils/data";
 import Button from "../ui/Button";
-
-const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -25,16 +23,19 @@ export default function Navbar() {
             "min-[923px]:flex"
           )}
         >
-          <div className="flex items-center justify-center space-x-3">
-            <div className="h-fit rounded-full bg-secondary p-3">
-              <LazyLoadImage src="/images/logo-icon.svg" alt="logo" />
+          <a href="#top">
+            <div className="flex items-center justify-center space-x-3">
+              <div className="h-fit rounded-full bg-secondary p-3">
+                <img className="h-5 w-5" src="/images/logo-icon.svg" alt="logo" loading="eager" />
+              </div>
+              <span className="text-2xl font-bold">Getstatic</span>
             </div>
-            <span className="text-2xl font-bold">Getstatic</span>
-          </div>
+          </a>
           <ul className="flex space-x-8">
             {navbarItemList.map((item) => (
               <li key={item.id}>
-                <span
+                <a
+                  href={item.href}
                   className={twJoin(
                     "cursor-pointer font-satoshi font-medium text-black",
                     "decoration-2 transition-all ease-in-out",
@@ -42,12 +43,13 @@ export default function Navbar() {
                   )}
                 >
                   {item.name}
-                </span>
+                </a>
               </li>
             ))}
           </ul>
           <div className="space-x-8">
-            <span
+            <a
+              href="#top"
               className={twJoin(
                 "cursor-pointer font-satoshi font-medium text-black",
                 "decoration-2 transition-all ease-in-out",
@@ -55,18 +57,17 @@ export default function Navbar() {
               )}
             >
               Contact
-            </span>
-            <button
+            </a>
+            <a
+              href="#top"
               className={twJoin(
                 "cursor-pointer font-satoshi font-medium text-black",
                 "decoration-2 transition-all ease-in-out",
                 "hover:underline hover:underline-offset-4"
               )}
-              type="button"
-              aria-label="login"
             >
               Login
-            </button>
+            </a>
             <Button
               variant="secondary"
               className="bg-secondary px-4 py-3 text-primary"
@@ -84,41 +85,15 @@ export default function Navbar() {
           )}
         >
           <div className="flex w-full justify-between">
-            <div className="h-fit rounded-full bg-secondary p-4">
-              <LazyLoadImage src="/images/logo-icon.svg" alt="logo" />
+            <div className="h-fit rounded-full bg-secondary p-3">
+              <img className="h-5 w-5" src="/images/logo-icon.svg" alt="logo" loading="eager" />
             </div>
             <button
               type="button"
               aria-label="close and open navbar"
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                </svg>
-              )}
+              {isOpen ? <CloseIcon /> : <BarIcon />}
             </button>
           </div>
           {isOpen ? (
@@ -126,14 +101,41 @@ export default function Navbar() {
               <ul className="space-y-4">
                 {navbarItemList.map((value) => (
                   <li key={value.id}>
-                    <span>{value.name}</span>
+                    <a
+                      className={twJoin(
+                        "cursor-pointer font-satoshi font-medium text-black",
+                        "decoration-2 transition-all ease-in-out",
+                        "hover:underline hover:underline-offset-4"
+                      )}
+                      href={value.href}
+                    >
+                      {value.name}
+                    </a>
                   </li>
                 ))}
                 <li>
-                  <span>Contact</span>
+                  <a
+                    className={twJoin(
+                      "cursor-pointer font-satoshi font-medium text-black",
+                      "decoration-2 transition-all ease-in-out",
+                      "hover:underline hover:underline-offset-4"
+                    )}
+                    href="#top"
+                  >
+                    Contact
+                  </a>
                 </li>
                 <li>
-                  <span>Login</span>
+                  <a
+                    className={twJoin(
+                      "cursor-pointer font-satoshi font-medium text-black",
+                      "decoration-2 transition-all ease-in-out",
+                      "hover:underline hover:underline-offset-4"
+                    )}
+                    href="#top"
+                  >
+                    Login
+                  </a>
                 </li>
                 <li>
                   <Button variant="secondary" className="px-4 py-3.5 text-primary">
@@ -146,5 +148,39 @@ export default function Navbar() {
         </div>
       </nav>
     </>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="h-6 w-6"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
+
+function BarIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="h-6 w-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+      />
+    </svg>
   );
 }

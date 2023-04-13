@@ -1,35 +1,32 @@
 import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks";
 import { bottomToTop, transition } from "~/lib/utils/animation";
 import { footerList } from "~/lib/utils/data";
-import EmailInput from "../ui/EmailInput";
+import InputEmail from "../ui/InputEmail";
 import { Paragraph } from "../ui/typography";
 
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function Footer() {
-  const [ref, controls] = useVisible();
-
   return (
     <m.footer
-      ref={ref}
+      viewport={{ once: true }}
       variants={bottomToTop}
       transition={transition}
       initial="hidden"
-      animate={controls}
+      whileInView="visible"
       className={twJoin(
         "flex w-full flex-col items-start justify-start",
-        "overflow-hidden font-satoshi",
-        "sm:my-10",
+        "mb-5 overflow-hidden font-satoshi",
+        "sm:mt-10",
         "lg:relative lg:flex-row"
       )}
     >
       <div
         className={twJoin(
           "flex w-full flex-col items-start justify-center font-medium",
-          "md:items-start md:justify-start",
+          "md:items-start md:justify-between",
           "lg:flex-row lg:space-x-20"
         )}
       >
@@ -52,7 +49,7 @@ export default function Footer() {
             "grid w-full grid-cols-1 grid-rows-1 gap-10",
             "min-[535px]:grid-cols-2",
             "sm:grid-cols-3",
-            "lg:grid-cols-4"
+            "lg:grid-cols-5"
           )}
         >
           {footerList.map((value) => (
@@ -74,10 +71,10 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-          <div className="w-full">
+          <div className="w-fit lg:col-span-2 lg:w-full">
             <span className="font-lexend text-xl font-medium text-darkgrey">Stay in touch</span>
             <div className="mt-6 flex w-full flex-col">
-              <EmailInput />
+              <InputEmail />
               <div className="mt-3 space-x-2">
                 <input type="checkbox" name="checkbox-privacy" />
                 <span className="font-satoshi text-sm text-gray">

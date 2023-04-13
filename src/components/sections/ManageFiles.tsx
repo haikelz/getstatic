@@ -1,7 +1,6 @@
 import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks";
 import { leftToRight, rightToLeft, transition } from "~/lib/utils/animation";
 import { actionsList, manageFilesList } from "~/lib/utils/data";
 import Button from "../ui/Button";
@@ -10,8 +9,6 @@ import { Description, Heading } from "../ui/typography";
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function ManageFiles() {
-  const [ref, controls] = useVisible();
-
   return (
     <section
       className={twJoin(
@@ -21,11 +18,11 @@ export default function ManageFiles() {
       )}
     >
       <m.div
+        viewport={{ once: true }}
         transition={transition}
-        ref={ref}
         variants={leftToRight}
         initial="hidden"
-        animate={controls}
+        whileInView="visible"
         className={twJoin(
           "flex flex-col items-start justify-start text-start",
           "sm:items-center sm:justify-center sm:text-center",
@@ -39,18 +36,20 @@ export default function ManageFiles() {
           Don’t worry if you missed something. With Static, you can easily manage and edit your
           files on the fly.
         </Description>
-        <Button variant="primary" className="w-fit py-4 px-6">
+        <Button variant="primary" className={twJoin("w-fit px-6 py-4", "hover:-translate-y-1.5")}>
           Try It Now
         </Button>
       </m.div>
       <m.div
+        viewport={{ once: true }}
         transition={transition}
-        ref={ref}
         variants={rightToLeft}
         initial="hidden"
-        animate={controls}
+        whileInView="visible"
         className={twJoin(
-          "relative mt-9 flex w-full flex-col items-center justify-center text-darkgrey",
+          "relative mt-9",
+          "flex w-full flex-col items-center justify-center",
+          "text-darkgrey",
           "lg:mt-0 lg:w-[80%] lg:items-center lg:justify-center"
         )}
       >
@@ -93,8 +92,10 @@ export default function ManageFiles() {
                     </div>
                     <span className="font-satoshi text-xl font-medium">{value.name}</span>
                   </div>
-                  {value.name === "index.html" || value.name === "logo.png" ? (
+                  {value.name === "index.html" ? (
                     <span className="font-satoshi text-gray">feb 13, 2023</span>
+                  ) : value.name === "logo.png" ? (
+                    <span className="font-satoshi text-gray">feb 15, 2023</span>
                   ) : (
                     <div className="h-0.5 w-6 bg-darkgrey"></div>
                   )}

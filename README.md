@@ -7,15 +7,20 @@
 
 - React JS
 - Vite
-- Framer Motion
 - Tailwind CSS
-
-## TODO
-
-- Using framer-motion for animation
-- Responsive tablet and mobile
+- Framer Motion
 
 ## Screenshots
+
+![ss1](/public/docs/ss-1.png)
+
+![ss1](/public/docs/ss-2.png)
+
+![ss1](/public/docs/ss-3.png)
+
+![ss1](/public/docs/ss-4.png)
+
+![ss1](/public/docs/ss-5.png)
 
 ## Credit
 

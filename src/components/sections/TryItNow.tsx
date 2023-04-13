@@ -1,7 +1,6 @@
 import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
-import { useVisible } from "~/hooks";
 import { scaleUp, transition } from "~/lib/utils/animation";
 import Button from "../ui/Button";
 import { Description, Heading } from "../ui/typography";
@@ -9,18 +8,16 @@ import { Description, Heading } from "../ui/typography";
 const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function TryItNow() {
-  const [ref, controls] = useVisible();
-
   return (
     <m.section
-      ref={ref}
+      viewport={{ once: true }}
       variants={scaleUp}
       transition={transition}
       initial="hidden"
-      animate={controls}
+      whileInView="visible"
       className={twJoin(
         "my-10 flex flex-col items-center justify-center text-center",
-        "md:w-[646px] min-[1281px]:my-20"
+        "md:w-[646px]"
       )}
     >
       <Heading>Try It Now!</Heading>
@@ -29,8 +26,12 @@ export default function TryItNow() {
         drag-n-drop wherever you want.
       </Description>
       <Button
-        className="flex items-center justify-center space-x-3 px-5 py-4"
         variant="primary"
+        className={twJoin(
+          "flex items-center justify-center",
+          "space-x-3 px-5 py-4",
+          "hover:-translate-y-1.5"
+        )}
         aria-label="upload zip"
       >
         <LazyLoadImage src="/images/upload-icon.svg" alt="upload" />

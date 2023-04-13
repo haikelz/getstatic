@@ -8,7 +8,7 @@ export default function Banner() {
   return (
     <section
       className={twJoin(
-        "mt-20 mb-10",
+        "mb-10",
         "flex w-full flex-col items-start justify-start text-start",
         "sm:items-center sm:justify-center sm:text-center",
         "lg:mb-20 lg:flex-row lg:justify-between lg:text-start"
@@ -38,15 +38,27 @@ export default function Banner() {
         >
           <Button
             variant="primary"
-            className={twJoin("flex items-center justify-center space-x-3", "py-3.5 px-4")}
+            className={twJoin(
+              "flex items-center justify-center space-x-3",
+              "px-4 py-3.5",
+              "hover:-translate-y-1.5"
+            )}
             aria-label="upload"
           >
             <img src="/images/upload-icon.svg" alt="upload" loading="eager" />
-            <span className="font-abeezee italic">Upload for free</span>
+            <span>Upload for free</span>
           </Button>
-          <button type="button" className="flex space-x-3 py-3.5 px-4" aria-label="watch video">
+          <button
+            type="button"
+            className={twJoin(
+              "flex space-x-3 px-4 py-3.5",
+              "transition-all ease-in-out",
+              "hover:-translate-y-1.5"
+            )}
+            aria-label="watch video"
+          >
             <img src="/images/youtube-icon.svg" alt="watch video" loading="eager" />
-            <span className="font-abeezee text-darkgrey">Watch Video</span>
+            <span className="font-satoshi text-base font-bold text-darkgrey">Watch Video</span>
           </button>
         </div>
       </m.div>
@@ -102,8 +114,8 @@ export default function Banner() {
                 <img className="w-full" src="/images/bag.png" alt="bag" loading="eager" />
               </div>
               <div className="flex flex-col text-darkgrey lg:w-[155px]">
-                <span className="text-xl font-medium">Cool Bag From Barrdi Darken</span>
-                <div className="mt-4 mb-9 flex flex-col space-y-3">
+                <span className="text-xl font-medium">Cool Bag From Bardi Darken</span>
+                <div className="mb-4 mt-2 flex flex-col space-y-3 sm:mb-9 sm:mt-4">
                   <span className="text-primary">New Release</span>
                   <span className="text-xl font-semibold">$95</span>
                 </div>

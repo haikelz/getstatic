@@ -30,27 +30,27 @@ export const navbarItemList = [
   {
     id: 1,
     name: "Docs",
-    href: "/",
+    href: "#top",
   },
   {
     id: 2,
     name: "Features",
-    href: "/",
+    href: "#benefits",
   },
   {
     id: 3,
     name: "Pricing",
-    href: "/",
+    href: "#pricing",
   },
   {
     id: 4,
     name: "Services",
-    href: "/",
+    href: "#top",
   },
   {
     id: 5,
     name: "Template",
-    href: "/",
+    href: "#top",
   },
 ];
 
@@ -67,14 +67,12 @@ export const benefitsList = [
     title: "Personal Domain",
     description: "Make sure your brand-new website will be unique and different.",
   },
-
   {
     id: 3,
     icon: "/images/code-icon.svg",
     title: "Code Editor",
     description: "No need to switch in between tabs anymore. Make changes right here.",
   },
-
   {
     id: 4,
     icon: "/images/folder-icon.svg",

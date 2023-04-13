@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   @font-face {
     font-family: "Lexend";
     src: url("/fonts/lexend/Lexend-Variable.ttf") format("truetype");
@@ -11,11 +15,6 @@
   @font-face {
     font-family: "Satoshi";
     src: url("/fonts/satoshi/Satoshi-Variable.ttf") format("truetype");
-  }
-
-  @font-face {
-    font-family: "ABeeZee-Italic";
-    src: url("/fonts/abeezee/ABeeZee-Italic.ttf") format("truetype");
   }
 
   body {
