@@ -52,19 +52,19 @@ export default function Banner() {
             <img src="/images/upload-icon.svg" alt="upload" loading="eager" />
             <span>Upload for free</span>
           </Button>
-          <button
-            type="button"
+          <div
             className={twJoin(
-              "flex items-center justify-center space-x-3",
+              "flex cursor-pointer items-center justify-center",
               "px-4 py-3.5",
               "transition-all ease-in-out",
               "hover:-translate-y-1.5"
             )}
-            aria-label="watch video"
           >
-            <img src="/images/youtube-icon.svg" alt="watch video" loading="eager" />
-            <span className="font-satoshi text-base font-bold text-darkgrey">Watch Video</span>
-          </button>
+            <div className="flex space-x-3">
+              <img src="/images/youtube-icon.svg" alt="watch video" loading="eager" />
+              <span className="font-satoshi text-base font-bold text-darkgrey">Watch Video</span>
+            </div>
+          </div>
         </div>
       </m.div>
       <m.div

@@ -66,7 +66,7 @@ export default function Benefits() {
                 >
                   <LazyLoadImage className="h-7 w-7" src={item.icon} alt="storage" />
                 </div>
-                <span className="my-6 font-bold">{item.title}</span>
+                <span className="my-6 text-xl font-bold">{item.title}</span>
                 <div className="md:w-[240px]">
                   <Paragraph>{item.description}</Paragraph>
                 </div>
