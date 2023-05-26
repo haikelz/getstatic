@@ -11,9 +11,10 @@ const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 export default function Footer() {
   return (
     <m.footer
+      viewport={{ once: true }}
       variants={bottomToTop}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
       className={twJoin(
         "flex w-full flex-col items-start justify-start",
         "mb-5 font-satoshi",
