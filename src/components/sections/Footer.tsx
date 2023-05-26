@@ -1,5 +1,7 @@
+import { m } from "framer-motion";
 import { lazy } from "react";
 import { twJoin } from "tailwind-merge";
+import { bottomToTop } from "~/lib/utils/animation";
 import { footerList } from "~/lib/utils/data";
 import InputEmail from "../ui/InputEmail";
 import { Paragraph } from "../ui/typography";
@@ -8,7 +10,10 @@ const LazyLoadImage = lazy(() => import("~/components/ui/LazyLoadImage"));
 
 export default function Footer() {
   return (
-    <footer
+    <m.footer
+      variants={bottomToTop}
+      initial="hidden"
+      animate="visible"
       className={twJoin(
         "flex w-full flex-col items-start justify-start",
         "mb-5 font-satoshi",
@@ -86,6 +91,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </m.footer>
   );
 }

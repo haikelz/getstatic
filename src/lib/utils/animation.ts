@@ -1,4 +1,4 @@
-import { Transition, Variants } from "framer-motion";
+import { Variants } from "framer-motion";
 
 export const rightToLeft: Variants = {
   hidden: { opacity: 0, x: 100 },
